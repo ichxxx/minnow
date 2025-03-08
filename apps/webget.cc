@@ -7,10 +7,29 @@
 
 using namespace std;
 
+const static std::string METHOD_GET        = "GET";
+const static std::string HTTP_1_1          = "HTTP/1.1";
+const static std::string HEADER_HOST       = "Host";
+const static std::string HEADER_CONNECTION = "Connection";
+const static std::string CRLF = "\r\n";
+
 void get_URL( const string& host, const string& path )
 {
-  cerr << "Function called: get_URL(" << host << ", " << path << ")\n";
-  cerr << "Warning: get_URL() has not been implemented yet.\n";
+  TCPSocket socket;
+  socket.connect( Address( host, "http" ) );
+
+  socket.write( { 
+    METHOD_GET, " ", path, " ", HTTP_1_1, CRLF,
+    HEADER_HOST, ": ", host, CRLF,
+    HEADER_CONNECTION, ": ", "close", CRLF,
+    CRLF
+  } );
+
+  std::string resp_buffer;
+  while ( !socket.eof() && !socket.closed() ) {
+    socket.read( resp_buffer );
+    cout << resp_buffer;
+  }
 }
 
 int main( int argc, char* argv[] )

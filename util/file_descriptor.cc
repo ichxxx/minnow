@@ -81,6 +81,7 @@ FileDescriptor FileDescriptor::duplicate() const
 void FileDescriptor::read( string& buffer )
 {
   if ( buffer.empty() ) {
+    // cout << "[FileDescriptor::read] buffer empty" << endl;
     buffer.resize( kReadBufferSize );
   }
 
