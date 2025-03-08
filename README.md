@@ -21,7 +21,9 @@ To format code: `cmake --build build --target format`
 
 -----------------------------------------------------
 
-running on macOS 15.3.1, using Ubuntu 24.04 LTS (arm64) virtualized by OrbStack
+check0:
+
+running on macOS 15.3.1 (M3), using Ubuntu 24.04 LTS (arm64) virtualized by OrbStack 1.10.2
 
 ByteStream throughput (pop length 4096): 110.49 Gbit/s
 
